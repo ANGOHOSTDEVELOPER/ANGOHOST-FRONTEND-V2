@@ -55,5 +55,13 @@ export default function AuthHelper(withRedirect: boolean) {
     }
   }
 
-  return { signIn, loading };
+  function isAuth() {
+    const token = Cookies.get('auth_token')
+    if (!token) {
+      return false
+    }
+    return true
+  }
+
+  return { signIn, loading, isAuth };
 }

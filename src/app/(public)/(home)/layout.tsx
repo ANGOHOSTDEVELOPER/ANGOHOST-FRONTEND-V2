@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,9 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main>
-        <h1>Public Layout</h1>
-        {children}
+    <main className="w-full">
+      
+      {children}
     </main>
   );
 }
+
