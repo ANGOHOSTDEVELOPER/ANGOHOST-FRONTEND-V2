@@ -42,7 +42,7 @@ export default function Home() {
             Registre um domínio agora e obtenha descontos
           </p>
           <div className="mt-8 flex items-center justify-center p-1 bg-white rounded-[100px] h-[65px]">
-            <button className="w-fit h-full px-5">
+            <button   type="button" title="search" className="w-fit h-full px-5">
               <Search size={20} color="#000" />
             </button>
             <input
@@ -51,7 +51,7 @@ export default function Home() {
               placeholder="Insira o seu domínio"
             />
             <TldSelector />
-            <button className="px-8 h-full bg-primary text-white rounded-[100px]">
+            <button   type="button" title="verificar"  className="px-8 h-full bg-primary text-white rounded-[100px]">
               Verificar
             </button>
           </div>
