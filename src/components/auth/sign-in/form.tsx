@@ -42,7 +42,7 @@ export function LoginForm({
           </div>
           <Input className="h-12 rounded-[16px]" {...register('password')} id="password" type="password" required />
         </div>
-        <Button disabled={loading} className="h-12 rounded-[16px] w-full" type="submit">
+        <Button  disabled={loading} className="h-12 rounded-[16px] w-full" type="submit">
           {loading ? 
           <Oval
           visible={true}

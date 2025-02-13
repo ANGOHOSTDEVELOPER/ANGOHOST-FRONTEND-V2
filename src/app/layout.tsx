@@ -1,15 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {Rubik,Rubik_Mono_One } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geistSans = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geistMono = Rubik_Mono_One({
+  variable: "--font-rubik-mono-one",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export default function RootLayout({
