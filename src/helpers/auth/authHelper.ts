@@ -19,6 +19,7 @@ interface IResponse {
 }
 
 export default function AuthHelper(withRedirect: boolean) {
+  
   const [loading, setLoading] = useState(false);
 
   async function signIn(data: ISignInProps) {

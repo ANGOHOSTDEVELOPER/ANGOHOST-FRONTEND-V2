@@ -1,4 +1,5 @@
 
+import { Footer } from "@/components/public/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({
     <main className="w-full">
       
       {children}
+      <Footer/>
     </main>
   );
 }
