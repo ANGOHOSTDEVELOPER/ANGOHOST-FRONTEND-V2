@@ -1,11 +1,11 @@
 import { Dribbble, Facebook, Github, Instagram, Link2, Linkedin, Send, Twitter, Youtube } from "lucide-react";
 import { Input } from "@/components/public/inputField/inputFiled";
-import ao from '../../../assets/images/flags/ao.png'
+import ao from '@/assets/images/flags/ao.png'
 import Link from "next/link";
 
 export function Footer() {
     return (
-        <footer className="bg-black px-[16px] md:px-[100px] pt-[50px] md:py-[50px] w-full h-max">
+        <footer className="bg-[#111114] px-[16px] md:px-[100px] pt-[50px] md:py-[50px] w-full h-max">
             <div className="flex flex-col-reverse lg:flex-row w-full h-max gap-x-8 gap-y-8 lg:gap-y-0 mx-auto max-w-[1366px]">
                 <div className="lg:w-1/2 h-max flex items-start justify-end">
                     <form className="rounded-[20px] md:rounded-[30px] border border-[#2d2d2d] bg-[#111] p-8 px-4 md:px-8 w-full h-max">

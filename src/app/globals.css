@@ -92,3 +92,8 @@ body {
   url(../assets/images/bg-header.jpg) center/cover no-repeat;
   
 }
+
+.dot {
+  background-image: radial-gradient(circle, #00000033 10%, transparent 10%);
+  background-size: 20px 20px; /* Tamanho do padrão */
+}
