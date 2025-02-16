@@ -1,9 +1,11 @@
+import clientsList from "./clientList";
 import ClientsGrid from "./clientsGrid";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 export default function ClientsSection() {
@@ -22,15 +24,23 @@ export default function ClientsSection() {
           </p>
         </div>
 
-        <Carousel className="w-full flex justify-center items-center">
+        <Carousel opts={{
+          align: "start"
+        }}  className="w-full flex justify-center items-center">
           <CarouselContent className="w-full flex justify-center items-center">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index} className="p-4 border rounded-lg shadow-lg mx-2  w-full flex justify-center items-center">
-                <ClientsGrid />
-              </CarouselItem>
+            {clientsList.map((clients, index) => (
+              <CarouselItem key={`${clients.type}-${index}`} className="p-4 border rounded-lg shadow-lg mx-2 flex flex-col justify-center items-center bg-white">
+              <div className="text-center mb-4">
+                <h2 className="text-xl font-semibold text-primary mb-3">
+                  {clients.type}
+                </h2>
+              </div>
+              <ClientsGrid clients={clients.clients} />
+            </CarouselItem>
             ))}
           </CarouselContent>
-    
+          <CarouselPrevious className="absolute left-0" />
+          <CarouselNext className="absolute right-0" />
         </Carousel>
       </section>
     </>
