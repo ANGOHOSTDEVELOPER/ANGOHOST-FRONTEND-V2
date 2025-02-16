@@ -49,10 +49,6 @@ const data = [
     price: 35000,
   },
   {
-    name: ".com",
-    price: 35000,
-  },
-  {
     name: ".org",
     price: 35000,
   },

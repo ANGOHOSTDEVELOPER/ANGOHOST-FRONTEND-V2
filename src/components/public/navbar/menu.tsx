@@ -131,7 +131,7 @@ export function Menu() {
     const { isAuth } = AuthHelper(false)
 
     return (
-        <div className="py-2 rounded-md">
+        <div className="p-2 rounded-md ">
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
