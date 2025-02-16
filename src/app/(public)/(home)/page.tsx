@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <header className="relative header w-full h-[480px]">
         <Navbar />
-        <div className=" w-full h-[300px] pt-12 flex items-center justify-center text-white flex-col">
+        <div className=" w-full h-[400px] pt-12 flex items-center justify-center text-white flex-col">
           <h1 className="font-bold text-[3rem]">
             Encontre o domínio perfeito para o seu site
           </h1>
