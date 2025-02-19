@@ -32,7 +32,7 @@ export default function Home() {
       </header>
       <ClientsSection />
       <section className="dot w-full">
-        <Pricing />
+        <Pricing firstTitle="Conheça os nossos " title="Planos de hospedagem" description="Garanta a performance do seu site com os nossos planos de hospedagem " type="hosting"/>
       </section>
     </>
   );

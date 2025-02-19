@@ -1,68 +1,24 @@
+"use client"
 import { Check } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { IAddon, IPlan } from "./types";
+import api from "@/services/api/api";
 
-const plans = [
+const Pricing = ({firstTitle, title, description, type}: {firstTitle: string, title: string, description: string, type: string}) => {
   
-  {
-    type: "Entusiasta",
-    price: "77 500 Kz",
-    subscription: "3 meses",
-    description:"Perfeito para pequenos negócios",
-    active: false,
-    features: [
-      "Domínio Grátis .ao .com",
-      "300GB Espaço SSD",
-      "Permite 10 Sites",
-      "CPU 3 Núcleos",
-      "Limite de 150.000 arquivos",
-      "30 Contas de Email",
-      "100 MySQL",
-      "Backups Semanais",
-      "SSL Let's Encrypt Grátis",
-      "Uptime de 99.9%",
-    ],
-  },
-  {
-    type: "Explorador",
-    price: "15 850 Kz",
-    subscription: "3 meses",
-    description:"Alavanque a sua empresa com o plano mais popular",
-    active: true,
-    features: [
-      "20GB Espaço SSD",
-      "Permite 1 Site",
-      "CPU 3 Núcleos",
-      "Limite de 150.000 arquivos",
-      "4 MySQL",
-      "Backups Semanais",
-      "SSL Let's Encrypt Grátis",
-      "Uptime de 99.9%",
-      "Permite 10 contas de E-mail",
-    ],
-  },
-  {
-    type: "Especialista",
-    price: "47 750 Kz",
-    subscription: "3 meses",
-    description:"Alta performance e recursos aprimorados",
-    active: false,
-    features: [
-      "Domínio Grátis .ao .com",
-      "200GB Espaço SSD",
-      "Permite 2 Sites",
-      "CPU 4 Núcleos",
-      "Limite de 150.000 arquivos",
-      "4 MySQL",
-      "Backups Semanais",
-      "SSL Let's Encrypt Grátis",
-      "Permite até 70 contas de E-mail",
-      "Uptime de 99.9%",
-    ],
-  },
-];
+  const [data, setData] = useState<IPlan[]>([])
 
-const Pricing = () => {
+  async function getPlans(type: string) {
+    const response = await api.get(`/general/getPlans/${type}`)
+    const res = response.data.data
+    setData(res)
+  }
+
+  useEffect(()=>{
+    getPlans(type)
+  }, [])
+  
   return (
     <section className="relative z-10 overflow-hidden e pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
       <div className="container mx-auto">
@@ -70,38 +26,38 @@ const Pricing = () => {
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
               <span className="mb-2 block text-lg font-semibold text-primary">
-                Conheça os nossos
+                {firstTitle}
               </span>
               <h2 className="mb-3 text-3xl font-bold leading-[1.208] text-dark dark:text-white sm:text-4xl md:text-[40px]">
-                Planos de hospedagem
+                {title}
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
-                Garanta a performance do seu site com os nossos planos de hospedagem
+                {description}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="-mx-4 flex flex-wrap justify-center">
-          <div className="-mx-4 flex flex-wrap">
-            {plans.map((plan) => (
-        <PricingCard
-        key={plan.type}
-        type={plan.type}
-        price={plan.price}
-        subscription={plan.subscription}
-        description={plan.description}
-        buttonText={`Escolher ${plan.type}`}
-        active={plan.active}
-      >
-        {plan.features.map((feature) => (
-          <List key={feature}><div className={` ${plan.active ? "bg-gradient-to-r from-[#6CFBB6] to-[#FFC64F]" : "border"} w-[24px] h-[24px] flex items-center justify-center rounded-full p-[1px] `}>
-          <div className={`${plan.active ? "bg-black" : "bg-white"} w-full h-full flex items-center justify-center rounded-full`}>
-            <Check color={plan.active ? "#fff":  "#111114" } size={14} />
-          </div>
-        </div>{feature}</List>
-          
-        ))}
+        <div className="w-full flex flex-wrap justify-center items-center">
+          <div className="w-full flex items-center justify-center gap-x-8 flex-wrap">
+            {data.map((plan) => (
+              <PricingCard
+              key={plan.id}
+              type={(JSON.parse(plan.addons) as IAddon).name}
+              price={(JSON.parse(plan.addons) as IAddon).price}
+              subscription={`1 ${(JSON.parse(plan.addons) as IAddon).period}`}
+              description={'Alavanque a sua empresa com o plano mais popular'}
+              buttonText={`Escolher ${(JSON.parse(plan.addons) as IAddon).name}`}
+              active={plan.rank === 2 && true}
+            >
+              {(JSON.parse(plan.addons) as IAddon).features.split('\n').map((feature) => (
+                <List key={feature}><div className={` ${plan.rank === 2 ? "bg-gradient-to-r from-[#6CFBB6] to-[#FFC64F]" : "border"} w-[24px] h-[24px] flex items-center justify-center rounded-full p-[1px] `}>
+                <div className={`${plan.rank === 2 ? "bg-black" : "bg-white"} w-full h-full flex items-center justify-center rounded-full`}>
+                  <Check color={plan.rank === 2 ? "#fff":  "#111114" } size={14} />
+                </div>
+              </div>{feature}</List>
+                
+              ))}
       </PricingCard>
       ))}
           </div>
@@ -134,7 +90,7 @@ const PricingCard = ({
 }: IPricingCardProps) => {
   return (
     <>
-      <div className={`${active && "scale-105"} w-full px-2 md:w-1/2 lg:w-[32%] mx-auto`}>
+      <div className={`${active && "scale-105"} px-2 w-[455px]`}>
         <div className={`relative z-10 mb-10 overflow-hidden rounded-[32px] border-2 border-stroke ${active ? 'text-[#fff]' : 'text-black'} ${active ? 'bg-[#111114]' : 'bg-white'} px-4 py-10 shadow-pricing dark:border-dark-3 dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-[50px]`}>
           <span className={`mb-3 font-[400] text-2xl block ${active ? "text-white" : 'text-primary'}`}>
             {type}

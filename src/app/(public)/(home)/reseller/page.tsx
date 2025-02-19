@@ -25,7 +25,7 @@ export default function Reseller() {
           </TldsPricesCard>
         </div>
       </header>
-      <Pricing />
+      <Pricing firstTitle="Conheça os nossos " title="Planos de revenda" description="Garanta a robustez da sua empresa com os nossos planos para revendedores " type="resale"/>
     </>
   );
 }
