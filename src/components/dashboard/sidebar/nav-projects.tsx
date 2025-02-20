@@ -17,6 +17,7 @@ export function NavProjects({
     name: string;
     url: string;
     icon: LucideIcon;
+    
   }[];
 }) {
   return (
