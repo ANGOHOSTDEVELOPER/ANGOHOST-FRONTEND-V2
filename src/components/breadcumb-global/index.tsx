@@ -30,6 +30,7 @@ const pathTranslations: Record<string, string> = {
   "components": "Componentes",
   "breadcrumb": "Trilha de Navegação",
   "profile-contact": "Perfil de Contato",
+  "configuration-dns":"Configuração DNS"
 };
 
 export function BreadcrumbGlobal() {
