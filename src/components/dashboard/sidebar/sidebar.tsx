@@ -8,6 +8,8 @@ import {
   Server,
   SquareTerminal,
   User,
+  UsersRound,
+  GlobeLock
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/sidebar/nav-main"
@@ -131,6 +133,16 @@ const data = {
       name: "Carteira",
       url: "#",
       icon: CreditCard,
+    },
+    {
+      name: "Perfis de Contacto",
+      url: "profile-contact",
+      icon: UsersRound,
+    },
+    {
+      name: "Predefinições DNS",
+      url: "configuration-dns",
+      icon: GlobeLock,
     }
   ],
 }

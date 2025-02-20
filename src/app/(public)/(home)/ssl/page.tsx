@@ -25,7 +25,8 @@ export default function SSL() {
           </TldsPricesCard>
         </div>
       </header>
-      <Pricing />
+      <Pricing firstTitle="Conheça os nossos " title="Planos de SSL" description="Garanta a proteção do seu site com os nossos planos de SSL " type="ssl"/>
+
     </>
   );
 }

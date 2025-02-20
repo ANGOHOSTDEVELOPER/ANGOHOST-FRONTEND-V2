@@ -25,7 +25,8 @@ export default function Email() {
           </TldsPricesCard>
         </div>
       </header>
-      <Pricing />
+      <Pricing firstTitle="Conheça os nossos " title="Planos de e-mail" description="Garanta a robustez da sua empresa com os nossos planos de e-amil " type="email"/>
+
     </>
   );
 }

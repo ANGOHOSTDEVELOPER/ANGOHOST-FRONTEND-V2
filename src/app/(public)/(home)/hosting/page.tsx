@@ -25,7 +25,7 @@ export default function Hosting() {
           </TldsPricesCard>
         </div>
       </header>
-      <Pricing />
+      <Pricing firstTitle="Conheça os nossos " title="Planos de hospedagem" description="Garanta a performance do seu site com os nossos planos de hospedagem " type="hosting"/>
     </>
   );
 }
