@@ -8,6 +8,7 @@ import {
   Server,
   SquareTerminal,
   User,
+  UsersRound
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/sidebar/nav-main"
@@ -131,6 +132,11 @@ const data = {
       name: "Carteira",
       url: "#",
       icon: CreditCard,
+    },
+    {
+      name: "Perfil de Contacto",
+      url: "dashboard/profile-contact",
+      icon: UsersRound,
     }
   ],
 }
