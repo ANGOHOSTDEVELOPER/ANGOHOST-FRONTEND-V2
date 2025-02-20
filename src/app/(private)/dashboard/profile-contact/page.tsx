@@ -1,7 +1,10 @@
+"use client";
+import ContactProfilesTable from "@/components/dashboard/ContactProfilesTable";
 
-import ContactProfileForm from "@/components/dashboard/profile-contact-form";
 export default function ContactProfile() {
   return (
-  <ContactProfileForm/>
+    <>
+      <ContactProfilesTable />
+    </>
   );
 }
