@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 const geistSans = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700', '800', '900']
 });
 
 const geistMono = Rubik_Mono_One({
@@ -21,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="pt-PT">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      style={{fontFamily: `var(--font-rubik)`}}
+        className={`${geistSans.variable} ${geistMono.variable} font-regular antialiased`}
       >
         {children}
         <Toaster />

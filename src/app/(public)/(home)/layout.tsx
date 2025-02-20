@@ -1,4 +1,5 @@
 
+import FAQ from "@/components/public/faq/faq";
 import { Footer } from "@/components/public/footer";
 import type { Metadata } from "next";
 
@@ -16,6 +17,7 @@ export default function RootLayout({
     <main className="w-full">
       
       {children}
+      <FAQ/>
       <Footer/>
     </main>
   );

@@ -1,22 +1,82 @@
+import { Check } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+const plans = [
+  
+  {
+    type: "Entusiasta",
+    price: "77 500 Kz",
+    subscription: "3 meses",
+    description:"Perfeito para pequenos negócios",
+    active: false,
+    features: [
+      "Domínio Grátis .ao .com",
+      "300GB Espaço SSD",
+      "Permite 10 Sites",
+      "CPU 3 Núcleos",
+      "Limite de 150.000 arquivos",
+      "30 Contas de Email",
+      "100 MySQL",
+      "Backups Semanais",
+      "SSL Let's Encrypt Grátis",
+      "Uptime de 99.9%",
+    ],
+  },
+  {
+    type: "Explorador",
+    price: "15 850 Kz",
+    subscription: "3 meses",
+    description:"Alavanque a sua empresa com o plano mais popular",
+    active: true,
+    features: [
+      "20GB Espaço SSD",
+      "Permite 1 Site",
+      "CPU 3 Núcleos",
+      "Limite de 150.000 arquivos",
+      "4 MySQL",
+      "Backups Semanais",
+      "SSL Let's Encrypt Grátis",
+      "Uptime de 99.9%",
+      "Permite 10 contas de E-mail",
+    ],
+  },
+  {
+    type: "Especialista",
+    price: "47 750 Kz",
+    subscription: "3 meses",
+    description:"Alta performance e recursos aprimorados",
+    active: false,
+    features: [
+      "Domínio Grátis .ao .com",
+      "200GB Espaço SSD",
+      "Permite 2 Sites",
+      "CPU 4 Núcleos",
+      "Limite de 150.000 arquivos",
+      "4 MySQL",
+      "Backups Semanais",
+      "SSL Let's Encrypt Grátis",
+      "Permite até 70 contas de E-mail",
+      "Uptime de 99.9%",
+    ],
+  },
+];
+
 const Pricing = () => {
   return (
-    <section className="relative z-10 overflow-hidden bg-white pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
+    <section className="relative z-10 overflow-hidden e pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
               <span className="mb-2 block text-lg font-semibold text-primary">
-                Pricing Table
+                Conheça os nossos
               </span>
               <h2 className="mb-3 text-3xl font-bold leading-[1.208] text-dark dark:text-white sm:text-4xl md:text-[40px]">
-                Our Pricing Plan
+                Planos de hospedagem
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                Garanta a performance do seu site com os nossos planos de hospedagem
               </p>
             </div>
           </div>
@@ -24,49 +84,26 @@ const Pricing = () => {
 
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="-mx-4 flex flex-wrap">
-            <PricingCard
-              type="Personal"
-              price="$59"
-              subscription="year"
-              description="Perfect for using in a personal website or a client project."
-              buttonText="Choose Personal"
-            >
-              <List>1 User</List>
-              <List>All UI components</List>
-              <List>Lifetime access</List>
-              <List>Free updates</List>
-              <List>Use on 1 (one) project</List>
-              <List>3 Months support</List>
-            </PricingCard>
-            <PricingCard
-              type="Business"
-              price="$199"
-              subscription="year"
-              description="Perfect for using in a personal website or a client project."
-              buttonText="Choose Business"
-              active
-            >
-              <List>5 User</List>
-              <List>All UI components</List>
-              <List>Lifetime access</List>
-              <List>Free updates</List>
-              <List>Use on31 (Three) project</List>
-              <List>4 Months support</List>
-            </PricingCard>
-            <PricingCard
-              type="Professional"
-              price="$256"
-              subscription="year"
-              description="Perfect for using in a personal website or a client project."
-              buttonText="Choose Professional"
-            >
-              <List>Unlimited User</List>
-              <List>All UI components</List>
-              <List>Lifetime access</List>
-              <List>Free updates</List>
-              <List>Unlimited project</List>
-              <List>12 Months support</List>
-            </PricingCard>
+            {plans.map((plan) => (
+        <PricingCard
+        key={plan.type}
+        type={plan.type}
+        price={plan.price}
+        subscription={plan.subscription}
+        description={plan.description}
+        buttonText={`Escolher ${plan.type}`}
+        active={plan.active}
+      >
+        {plan.features.map((feature) => (
+          <List key={feature}><div className={` ${plan.active ? "bg-gradient-to-r from-[#6CFBB6] to-[#FFC64F]" : "border"} w-[24px] h-[24px] flex items-center justify-center rounded-full p-[1px] `}>
+          <div className={`${plan.active ? "bg-black" : "bg-white"} w-full h-full flex items-center justify-center rounded-full`}>
+            <Check color={plan.active ? "#fff":  "#111114" } size={14} />
+          </div>
+        </div>{feature}</List>
+          
+        ))}
+      </PricingCard>
+      ))}
           </div>
         </div>
       </div>
@@ -97,18 +134,18 @@ const PricingCard = ({
 }: IPricingCardProps) => {
   return (
     <>
-      <div className="w-full px-4 md:w-1/2 lg:w-[30%] mx-auto">
-        <div className="relative z-10 mb-10 overflow-hidden rounded-[10px] border-2 border-stroke bg-white px-8 py-10 shadow-pricing dark:border-dark-3 dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-[50px]">
-          <span className="mb-3 block text-lg font-semibold text-primary">
+      <div className={`${active && "scale-105"} w-full px-2 md:w-1/2 lg:w-[32%] mx-auto`}>
+        <div className={`relative z-10 mb-10 overflow-hidden rounded-[32px] border-2 border-stroke ${active ? 'text-[#fff]' : 'text-black'} ${active ? 'bg-[#111114]' : 'bg-white'} px-4 py-10 shadow-pricing dark:border-dark-3 dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-[50px]`}>
+          <span className={`mb-3 font-[400] text-2xl block ${active ? "text-white" : 'text-primary'}`}>
             {type}
           </span>
-          <h2 className="mb-5 text-[42px] font-bold text-dark dark:text-white">
+          <h2 className={`mb-2 text-[42px] font-bold text-dark dark:text-white ${active && "bg-gradient-to-r from-[#6CFBB6] to-[#FFC64F] bg-clip-text text-transparent"}`}>
             {price}
-            <span className="text-base font-medium text-body-color dark:text-dark-6">
+            <span className="text-base font-regular text-body-color dark:text-dark-6 ">
               / {subscription}
             </span>
           </h2>
-          <p className="mb-8 border-b border-stroke pb-8 text-base text-body-color dark:border-dark-3 dark:text-dark-6">
+          <p className="opacity-80 font-light border-stroke pb-8 text-base text-body-color dark:border-dark-3 dark:text-dark-6">
             {description}
           </p>
           <div className="mb-9 flex flex-col gap-[14px]">{children}</div>
@@ -116,13 +153,14 @@ const PricingCard = ({
             href="/#"
             className={` ${
               active
-                ? "block w-full rounded-md border border-primary bg-primary p-3 text-center text-base font-medium text-white transition hover:bg-opacity-90"
-                : "block w-full rounded-md border border-stroke bg-transparent p-3 text-center text-base font-medium text-primary transition hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
+                ? "block w-full rounded-[24px] border border-primary bg-gradient-to-r from-[#6CFBB6] to-[#FFC64F] p-3 text-center text-base font-medium text-black transition hover:bg-opacity-90"
+                : "block w-full rounded-[24px] border border-stroke bg-transparent p-3 text-center text-base font-medium text-primary transition hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
             } `}
           >
             {buttonText}
           </Link>
-          <div>
+          {!active && (
+            <div>
             <span className="absolute right-0 top-7 z-[-1]">
               <svg
                 width={77}
@@ -382,6 +420,7 @@ const PricingCard = ({
               </svg>
             </span>
           </div>
+          )}
         </div>
       </div>
     </>
@@ -390,6 +429,9 @@ const PricingCard = ({
 
 const List = ({ children }: { children: React.ReactNode }) => {
   return (
-    <p className="text-base text-body-color dark:text-dark-6">{children}</p>
+    <div className="text-base text-body-color dark:text-dark-6 flex items-center justify-start gap-x-2">{children}</div>
   );
 };
+
+
+
