@@ -122,7 +122,7 @@ const contactData: { title: string; href: string; description: string, url: stri
         href: "https://wa.me/+244942090108",
         url: 'https://www.squarebrothers.com/images/icon/whatsapp.svg',
         description:
-            "Converse conosco  WhatsApp",
+            "Converse conosco no  WhatsApp",
     }
 ]
 
