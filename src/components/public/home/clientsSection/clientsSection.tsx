@@ -40,8 +40,8 @@ export default function ClientsSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4" />
-        <CarouselNext className="absolute right-4" />
+        <CarouselPrevious className="absolute left-32" size={"lg"} />
+        <CarouselNext className="absolute right-32" size={"lg"} />
       </Carousel>
     </section>
   );
