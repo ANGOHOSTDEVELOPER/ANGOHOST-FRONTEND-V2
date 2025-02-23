@@ -10,39 +10,39 @@ import {
 
 export default function ClientsSection() {
   return (
-    <>
-      <section className="dot mt-[100px] pt-[100px] w-full flex flex-col items-center justify-center">
-        <div className="mb-[60px] max-w-[510px] text-center">
-          <span className="mb-2 block text-lg font-semibold text-primary">
-            Especialistas em hospedagem
-          </span>
-          <h2 className="mb-3 text-3xl font-bold leading-[1.208] text-dark dark:text-white sm:text-4xl md:text-[40px]">
-            Os nossos clientes
-          </h2>
-          <p className="text-base text-body-color dark:text-dark-6">
-            A mais de 9 anos hospedando os sonhos dos nossos clientes
-          </p>
-        </div>
+    <section className=" dot   mt-[100px] pt-[100px] flex flex-col items-center w-full">
+      <div className="mb-10 max-w-[510px] text-center">
+        <span className="mb-2 block text-lg font-semibold text-primary">
+          Especialistas em hospedagem
+        </span>
+        <h2 className="mb-3 text-3xl font-bold leading-tight text-dark dark:text-white sm:text-4xl md:text-[40px]">
+          Os nossos clientes
+        </h2>
+        <p className="text-base text-body-color dark:text-dark-6">
+          Há mais de 9 anos hospedando os sonhos dos nossos clientes
+        </p>
+      </div>
 
-        <Carousel opts={{
-          align: "start"
-        }}  className="w-full flex justify-center items-center">
-          <CarouselContent className="w-full flex justify-center items-center">
-            {clientsList.map((clients, index) => (
-              <CarouselItem key={`${clients.type}-${index}`} className="p-4 border rounded-lg shadow-lg mx-2 flex flex-col justify-center items-center bg-white">
-              <div className="text-center mb-4">
-                <h2 className="text-xl font-semibold text-primary mb-3">
-                  {clients.type}
-                </h2>
-              </div>
+      <Carousel
+       
+        className="    w-full flex justify-center "
+      >
+        <CarouselContent className="flex gap-4 bg-transparent">
+          {clientsList.map((clients, index) => (
+            <CarouselItem
+              key={`${clients.type}-${index}`}
+              className="p-6  rounded-lg shadow-lg  bg-transparent  translate-x-0 flex flex-col items-center"
+            >
+              <h2 className="text-xl font-semibold text-primary mb-3 text-center">
+                {clients.type}
+              </h2>
               <ClientsGrid clients={clients.clients} />
             </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-0" />
-          <CarouselNext className="absolute right-0" />
-        </Carousel>
-      </section>
-    </>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-32" size={"lg"} />
+        <CarouselNext className="absolute right-32" size={"lg"} />
+      </Carousel>
+    </section>
   );
 }
