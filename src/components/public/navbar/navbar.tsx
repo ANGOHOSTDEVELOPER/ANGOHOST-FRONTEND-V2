@@ -11,6 +11,7 @@ export default function Navbar() {
                 <Image className="w-[170px]" src={logo} alt="logo"/>
             </div>
             <Menu/>
+            
         </div>
       </nav>
     </>

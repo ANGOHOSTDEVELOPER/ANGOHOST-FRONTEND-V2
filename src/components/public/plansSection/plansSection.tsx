@@ -1,7 +1,6 @@
 "use client";
 import { Check } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { IAddon, IPlan } from "./types";
 import api from "@/services/api/api";
 import {
@@ -14,6 +13,8 @@ import {
 import { useQuery } from "@tanstack/react-query";
 
 import { CardSkeleton } from "./components/card-skeleton";
+import { Button } from "@/components/ui/button";
+import { AdicionarPlanoModal } from "./components/add-plan-modal";
 
 const Pricing = ({
   firstTitle,
@@ -37,7 +38,7 @@ const Pricing = ({
    return response.data.data as IPlan[];
   
   }
-  
+
 
 
   return (
@@ -81,6 +82,7 @@ const Pricing = ({
                   >
                     <PricingCard
                       key={plan.id}
+                      id={plan.id}
                       type={(JSON.parse(plan.addons) as IAddon).name}
                       price={(JSON.parse(plan.addons) as IAddon).price}
                       subscription={`1 ${
@@ -143,6 +145,7 @@ interface IPricingCardProps {
   subscription: string;
   buttonText: string;
   active?: boolean;
+  id: number;
 }
 
 const PricingCard = ({
@@ -153,7 +156,10 @@ const PricingCard = ({
   subscription,
   buttonText,
   active,
+  id  
 }: IPricingCardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   return (
     <>
       <div className={`${active && "scale-105"} px-2 w-[455px]`}>
@@ -186,8 +192,8 @@ const PricingCard = ({
             {description}
           </p>
           <div className="mb-9 flex flex-col gap-[14px]">{children}</div>
-          <Link
-            href="/#"
+          <Button
+           onClick={() => setIsModalOpen(true)}
             className={` ${
               active
                 ? "block w-full rounded-[24px] border border-primary bg-gradient-to-r from-[#6CFBB6] to-[#FFC64F] p-3 text-center text-base font-medium text-black transition hover:bg-opacity-90"
@@ -195,7 +201,7 @@ const PricingCard = ({
             } `}
           >
             {buttonText}
-          </Link>
+          </Button>
           {!active && (
             <div>
               <span className="absolute right-0 top-7 z-[-1]">
@@ -460,6 +466,18 @@ const PricingCard = ({
           )}
         </div>
       </div>
+      <AdicionarPlanoModal
+      
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      onAddToCart={(plano, tipo, quantidade) => console.log(plano, tipo, quantidade)}
+      plano={
+        {
+          id: id.toString(),
+          titulo: type,
+          preco: parseFloat(price),
+        }
+      } />
     </>
   );
 };

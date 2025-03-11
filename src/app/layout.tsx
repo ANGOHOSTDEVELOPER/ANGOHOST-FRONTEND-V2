@@ -7,8 +7,9 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import Clarity from "@microsoft/clarity";
 const geistSans = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
@@ -27,7 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [queryClient] = useState(() => new QueryClient());
-
+  useEffect(() => {
+    Clarity.init('qjucew0eam');
+  }, []);
   return (
 
     <html lang="pt-PT">
